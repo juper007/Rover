@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rover Sitters</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script type="text/javascript" src = "lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            console.log("AAA");
+            var sitters = [];
+            $.ajax({
+                url: 'http://localhost:8000/sitters',
+                type: "GET",
+                dataType: "jsonp",
+                jsonpCallback: "jsonCallback",
+                success: function() {
+                    console.log("Success");
+                }
+            });
+        });
+
+        function jsonCallback(json) {
+            console.log(json);
+        }
+    </script>
+</head>
+<body>
+    <div class="body-container">
+        <div class="header-container">
+            <!-- logo -->
+            <img src="https://www.rover.com/static/new_design/images/logo@200x200.ce2f57dbe3e4.png">
+        </div>
+        <div class="search-container">
+            <div class="search-controler">
+                <div class="search-text"> Find Sitters</div>
+                <input type="range" min="1" max="5" value="5" list="tickmarks"/>
+                <datalist id="tickmarks">
+                    <option value="1">
+                    <option value="2">
+                    <option value="3">
+                    <option value="4">
+                    <option value="5">
+                </datalist>
+            </div>
+            <div class="search-result">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
